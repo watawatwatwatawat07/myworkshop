@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
 permissions:
   contents: write
   pages: write
@@ -25,13 +24,6 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-          # Type definitions
-          npm install -D @types/react @types/react-dom @types/node
-          
-          # Clean up unused components
-          rm -f src/components/ui/calendar.tsx
-          rm -f src/components/ui/chart.tsx
-          
       - name: Build
         run: npm run build
         
