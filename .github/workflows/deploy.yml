@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: write
   pages: write
@@ -26,8 +25,22 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
+          # Type definitions
           npm install -D @types/react @types/react-dom @types/node
-          npm install @radix-ui/react-tabs @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-dialog @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-switch @radix-ui/react-toast @radix-ui/react-toggle @radix-ui/react-toggle-group @radix-ui/react-tooltip next-themes react-day-picker react-resizable-panels sonner
+          
+          # Radix UI components
+          npm install @radix-ui/react-tabs @radix-ui/react-accordion @radix-ui/react-alert-dialog 
+          npm install @radix-ui/react-aspect-ratio @radix-ui/react-dialog @radix-ui/react-popover 
+          npm install @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area 
+          npm install @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider 
+          npm install @radix-ui/react-switch @radix-ui/react-toast @radix-ui/react-toggle 
+          npm install @radix-ui/react-toggle-group @radix-ui/react-tooltip @radix-ui/react-checkbox
+          npm install @radix-ui/react-context-menu @radix-ui/react-dropdown-menu @radix-ui/react-label
+          npm install @radix-ui/react-hover-card @radix-ui/react-menubar
+          
+          # Other UI libraries
+          npm install next-themes react-day-picker react-resizable-panels sonner
+          npm install embla-carousel-react recharts cmdk vaul input-otp react-hook-form
         
       - name: Build
         run: npm run build
