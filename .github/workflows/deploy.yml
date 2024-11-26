@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: write
   pages: write
@@ -26,8 +25,43 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-          npm install -D @types/react @types/react-dom @types/node
-          npm install @radix-ui/react-tabs @radix-ui/react-accordion @radix-ui/react-alert-dialog @radix-ui/react-aspect-ratio @radix-ui/react-dialog @radix-ui/react-popover @radix-ui/react-progress @radix-ui/react-radio-group @radix-ui/react-scroll-area @radix-ui/react-select @radix-ui/react-separator @radix-ui/react-slider @radix-ui/react-switch @radix-ui/react-toast @radix-ui/react-toggle @radix-ui/react-toggle-group @radix-ui/react-tooltip next-themes react-day-picker react-resizable-panels sonner
+          # Core React dependencies
+          npm install react react-dom
+          npm install react-router-dom
+          
+          # Type definitions
+          npm install -D @types/react @types/react-dom @types/node @types/react-router-dom
+          
+          # UI Components
+          npm install @radix-ui/react-slot
+          npm install class-variance-authority
+          npm install clsx
+          npm install tailwind-merge
+          npm install lucide-react
+          
+          # Radix UI components
+          npm install @radix-ui/react-tabs 
+          npm install @radix-ui/react-accordion 
+          npm install @radix-ui/react-alert-dialog 
+          npm install @radix-ui/react-aspect-ratio 
+          npm install @radix-ui/react-dialog 
+          npm install @radix-ui/react-popover 
+          npm install @radix-ui/react-progress 
+          npm install @radix-ui/react-radio-group 
+          npm install @radix-ui/react-scroll-area 
+          npm install @radix-ui/react-select 
+          npm install @radix-ui/react-separator 
+          npm install @radix-ui/react-slider 
+          npm install @radix-ui/react-switch 
+          npm install @radix-ui/react-toast 
+          npm install @radix-ui/react-toggle 
+          npm install @radix-ui/react-toggle-group 
+          npm install @radix-ui/react-tooltip
+          
+          # Additional UI dependencies
+          npm install next-themes
+          npm install react-resizable-panels
+          npm install sonner
         
       - name: Build
         run: npm run build
