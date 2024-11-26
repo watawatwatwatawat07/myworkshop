@@ -4,7 +4,10 @@ on:
   push:
     branches:
       - main
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1706f3663c856e1ddea9baf57678f9b6182328e2
 permissions:
   contents: write
   pages: write
@@ -25,6 +28,7 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
+<<<<<<< HEAD
           # Core React dependencies
           npm install react react-dom
           npm install react-router-dom
@@ -63,6 +67,8 @@ jobs:
           npm install react-resizable-panels
           npm install sonner
         
+=======
+>>>>>>> 1706f3663c856e1ddea9baf57678f9b6182328e2
       - name: Build
         run: npm run build
         

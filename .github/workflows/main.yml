@@ -1,0 +1,65 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install Dependencies
+        run: |
+          npm install
+          # Install all Radix UI components
+          npm install @radix-ui/react-accordion
+          npm install @radix-ui/react-alert-dialog
+          npm install @radix-ui/react-aspect-ratio
+          npm install @radix-ui/react-collapsible
+          npm install @radix-ui/react-popover
+          npm install @radix-ui/react-progress
+          npm install @radix-ui/react-radio-group
+          npm install @radix-ui/react-scroll-area
+          npm install @radix-ui/react-select
+          npm install @radix-ui/react-separator
+          npm install @radix-ui/react-slider
+          npm install @radix-ui/react-switch
+          npm install @radix-ui/react-tabs
+          npm install @radix-ui/react-toast
+          npm install @radix-ui/react-toggle
+          npm install @radix-ui/react-toggle-group
+          npm install @radix-ui/react-tooltip
+          
+          # Install other required packages
+          npm install react-resizable-panels
+          
+          # Install type definitions
+          npm install -D @types/react @types/react-dom @types/node
+          
+      - name: Fix use-toast.ts type error
+        run: |
+          echo "Fixing type in use-toast.ts"
+          sed -i 's/setOpen = (open) =>/setOpen = (open: boolean) =>/' src/hooks/use-toast.ts
+        
+      - name: Build
+        run: npm run build
+        
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
