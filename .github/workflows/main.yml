@@ -25,35 +25,36 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install
-          # Install all Radix UI components
-          npm install @radix-ui/react-accordion
-          npm install @radix-ui/react-alert-dialog
-          npm install @radix-ui/react-aspect-ratio
-          npm install @radix-ui/react-collapsible
-          npm install @radix-ui/react-popover
-          npm install @radix-ui/react-progress
-          npm install @radix-ui/react-radio-group
-          npm install @radix-ui/react-scroll-area
-          npm install @radix-ui/react-select
-          npm install @radix-ui/react-separator
-          npm install @radix-ui/react-slider
-          npm install @radix-ui/react-switch
-          npm install @radix-ui/react-tabs
-          npm install @radix-ui/react-toast
-          npm install @radix-ui/react-toggle
-          npm install @radix-ui/react-toggle-group
+          # Core React dependencies
+          npm install react react-dom
+          npm install react-router-dom
+          
+          # Type definitions
+          npm install -D @types/react @types/react-dom @types/node @types/react-router-dom
+          
+          # Radix UI components
+          npm install @radix-ui/react-tabs 
+          npm install @radix-ui/react-accordion 
+          npm install @radix-ui/react-alert-dialog 
+          npm install @radix-ui/react-aspect-ratio 
+          npm install @radix-ui/react-dialog 
+          npm install @radix-ui/react-popover 
+          npm install @radix-ui/react-progress 
+          npm install @radix-ui/react-radio-group 
+          npm install @radix-ui/react-scroll-area 
+          npm install @radix-ui/react-select 
+          npm install @radix-ui/react-separator 
+          npm install @radix-ui/react-slider 
+          npm install @radix-ui/react-switch 
+          npm install @radix-ui/react-toast 
+          npm install @radix-ui/react-toggle 
+          npm install @radix-ui/react-toggle-group 
           npm install @radix-ui/react-tooltip
           
-          # Install other required packages
+          # Additional UI dependencies
+          npm install next-themes
           npm install react-resizable-panels
-          
-          # Install type definitions
-          npm install -D @types/react @types/react-dom @types/node
-          
-      - name: Fix use-toast.ts type error
-        run: |
-          echo "Fixing type in use-toast.ts"
-          sed -i 's/setOpen = (open) =>/setOpen = (open: boolean) =>/' src/hooks/use-toast.ts
+          npm install sonner
         
       - name: Build
         run: npm run build
