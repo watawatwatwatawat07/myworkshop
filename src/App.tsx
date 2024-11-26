@@ -1,56 +1,24 @@
-import { Navbar } from '@/components/Navbar';
-import { MemberCard } from '@/components/MemberCard';
-import { teamMembers } from '@/data/team-members';
-import { ThemeProvider } from '@/components/ThemeProvider';
-import { CircleIcon, StarIcon, SquareIcon } from 'lucide-react';
+import { teamMembers } from './data/team-members'
+import { Navbar } from './components/Navbar'
+import { ThemeProvider } from './components/ThemeProvider'
+import { MemberCard } from './components/MemberCard'
 
 function App() {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="team-directory-theme">
-      <div className="min-h-screen pt-16 bg-gradient-to-b from-background via-background to-muted/50 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-          <CircleIcon className="absolute top-20 left-12 w-6 h-6 text-blue-500/20 animate-float" style={{ animationDelay: '0s' }} />
-          <StarIcon className="absolute top-40 right-12 w-4 h-4 text-purple-500/20 animate-float" style={{ animationDelay: '1s' }} />
-          <SquareIcon className="absolute bottom-20 left-1/2 w-5 h-5 text-blue-500/20 animate-float" style={{ animationDelay: '2s' }} />
-        </div>
-
+    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+      <div className="min-h-screen bg-background">
         <Navbar />
-        
-        <main className="container mx-auto px-4 py-16 relative">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <div className="inline-block">
-              <span className="inline-block animate-float" style={{ animationDelay: '0.5s' }}>
-                <h1 className="text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-blue-600 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-                  Meet the Team
-                </h1>
-              </span>
-            </div>
-            <p className="text-lg text-muted-foreground mt-4">
-              A diverse group of passionate individuals working together to create amazing experiences
-            </p>
-            <div className="flex items-center justify-center gap-2 mt-6">
-              <span className="inline-flex h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
-              <span className="inline-flex h-2 w-2 rounded-full bg-purple-500 animate-pulse" style={{ animationDelay: '0.2s' }} />
-              <span className="inline-flex h-2 w-2 rounded-full bg-blue-600 animate-pulse" style={{ animationDelay: '0.4s' }} />
-            </div>
-          </div>
-
+        <main className="container mx-auto px-4 py-24">
+          <h1 className="text-4xl font-bold text-center mb-12">Our Team</h1>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member) => (
-              <div key={member.id}>
-                <MemberCard member={member} />
-              </div>
+              <MemberCard key={member.id} member={member} />
             ))}
           </div>
         </main>
 
         <footer className="border-t mt-32 bg-muted/5 relative">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -bottom-24 right-24 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
-          </div>
           <div className="container mx-auto px-4 py-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
               <div>
@@ -88,7 +56,7 @@ function App() {
         </footer>
       </div>
     </ThemeProvider>
-  );
+  )
 }
 
-export default App;
+export default App
